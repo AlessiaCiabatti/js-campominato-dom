@@ -4,11 +4,11 @@ const gridContainer = document.querySelector('.grid-container');
 // 6
 const btnGioca = document.querySelector('.btn-gioca');
 // all'interno del click del bottone ci sta tutto, init 
-btnGioca.addEventListener('click', init);
-
-// 6
+btnGioca.addEventListener('click', function(){
+  // 6
 // funzione di inizializzazione
-// init();
+  init()
+});
 
 // generare numero casuale da 1 a 16 estraendoli da 1 a 100 senza ripetizioni
 const n = 16;
@@ -26,12 +26,7 @@ while(arrayBombe.length < n);
 
 console.log(arrayBombe);
 
-if(arrayBombe.includes(randomNumber)){
-  console.log('presente');
-}
-else{
-  console.log('assente');
-}
+
 
 /*///////////
 FUNCTION
@@ -39,7 +34,7 @@ FUNCTION
 
 // 6
 function init(){
-  reset()
+  reset();
 
 // 1
 // realizzo il ciclo di 100 ripetizioni
@@ -72,7 +67,11 @@ function getSquare(numero){
 
     // 5
     // quando clicco vedo il colore
-    sq.classList.add('clicked')
+    sq.classList.add('clicked');
+
+    if (arrayBombe.includes(numero)) {
+      sq.classList.add('red_bomba');
+    }
   })
 
   return sq;
