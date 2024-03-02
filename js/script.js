@@ -10,7 +10,9 @@ btnGioca.addEventListener('click', function(){
   init()
 });
 
+
 // generare numero casuale da 1 a 16 estraendoli da 1 a 100 senza ripetizioni
+let click = 0;
 const n = 16;
 const arrayBombe = [];
 let randomNumber;
@@ -71,7 +73,23 @@ function getSquare(numero){
 
     if (arrayBombe.includes(numero)) {
       sq.classList.add('red_bomba');
+      alert('Gioco finito! Hai fatto ' + click + ' punti! Ricarica la pagina per giocare ancora!')
+      const squares = document.querySelectorAll('.square');
+      for (let i = 0; i < squares.length; i++) {
+        const cell = squares[i];
+        if (arrayBombe.includes(cell._sqID)) {
+            cell.classList.add('red_bomba');
+            cell.innerHTML = cell._sqID;
+        }
+        else {
+          cell.classList.add('clicked');
+          cell.innerHTML = cell._sqID;
+        }
     }
+    }
+    click = click + 1;
+    console.log('click' + click);
+
   })
 
   return sq;
